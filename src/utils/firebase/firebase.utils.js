@@ -12,15 +12,24 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 // getFirestore initialize firestore db
 // doc retrieve document from firestore db
 // getDoc gets the doc data
 // setDoc sets the doc data
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   // your config obj
+  apiKey: "AIzaSyCcEMxyJvHD5MtldwiUGpB07IegiZ3WAbg",
+  authDomain: "react-ecom-1.firebaseapp.com",
+  projectId: "react-ecom-1",
+  storageBucket: "react-ecom-1.appspot.com",
+  messagingSenderId: "376749176573",
+  appId: "1:376749176573:web:d05b2fe4e0ac5b97743094",
 };
 
 // Initialize Firebase
@@ -74,8 +83,6 @@ export const createUserDocumentFromAuth = async (
     }
   }
   return userDocRef;
-
-  // if user exist
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
@@ -89,3 +96,11 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+export const SignOutUser = async () => await signOut(auth);
+
+// onAuthStateChanged is a observer which is invoked whenever there is a change in auth state i.e signIn singOut
+// we can pass a callback function that gets called whenever the auth state is changed
+// inside callback(user) we can a userObject which has the value of currently logged in user if we perform signout that user object will be null
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

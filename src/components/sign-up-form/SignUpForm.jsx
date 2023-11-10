@@ -24,8 +24,6 @@ export const SignUpForm = () => {
       ...formFields,
       [name]: value,
     });
-
-    console.log({ formFields });
   };
 
   const resetFormFields = () => {
