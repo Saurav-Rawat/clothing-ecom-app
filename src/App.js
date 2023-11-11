@@ -12,7 +12,8 @@ const App = () => {
       <Route path="/" element={<Navigation />}>
         {/* index tells route its the base component to render in outlet */}
         <Route index element={<Home />} />
-        <Route path="shop" element={<Shop />} />
+        {/* /* will tell routes whenever we are trying to access anything like shop/*(anything after / let <Shop /> handle it) */}
+        <Route path="shop/*" element={<Shop />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>

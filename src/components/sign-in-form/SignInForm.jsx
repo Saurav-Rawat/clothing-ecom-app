@@ -5,7 +5,7 @@ import {
 } from "../../utils/firebase/firebase.utils";
 import { FormInput } from "../form-input/FormInput";
 import "./SignInForm.styles.scss";
-import { Button } from "../button/Button";
+import { Button, BUTTON_TYPE_CLASSES } from "../button/Button";
 
 const defaultFormFields = {
   email: "",
@@ -72,7 +72,11 @@ export const SignInForm = () => {
         />
         <div className="buttons-container">
           <Button type="submit">Sign in</Button>
-          <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            onClick={signInWithGoogle}
+          >
             Google sign in
           </Button>
         </div>
